@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  app:
+    container_name: insurance_app
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "npm i -g -g nodemon jest ts-node-dev && npm run seed && ts-node-dev --respawn src/server.ts"
+
+  db:
+    container_name: insurance_app_db
+    image: postgres:16
+    restart: always
+    command: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      PGUSER: "postgres"
+    env_file:
+      - .env
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
