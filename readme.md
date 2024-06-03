@@ -18,7 +18,5 @@ Sketch a scalable backend architecture including data integration points, API se
 Highlight how the design supports scalability, reliability, and data consistency.
 Mention potential use of Google Cloud services for enhancing the infrastructure.
 
-Submission Requirements:
-You should use a Git repository for code submission, including clear README instructions for setup and testing.
-System design diagrams can be submitted as a PDF or image file, with explanations included in the document or as part of the repository's documentation.
-BOTH submissions need to be explained via a loom video or similar. Also, be prepared for followup questions by recruiter or our client hiring manager.
+
+``` The Express.js project, accompanied by a README file, is located within the 'part1' folder. ```
